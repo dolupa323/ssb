@@ -1,0 +1,1 @@
+{"datamodel_type": "Client", "code": "return game:GetService('ReplicatedStorage'):WaitForChild('SsbDebug', 8):Invoke('info')"}

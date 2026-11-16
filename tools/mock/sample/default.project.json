@@ -1,0 +1,20 @@
+{
+  "name": "MockSample",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "shared": { "$path": "shared" }
+    },
+    "ServerScriptService": {
+      "server": { "$path": "server" }
+    },
+    "StarterGui": {
+      "$properties": { "ScreenOrientation": "LandscapeSensor" }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": { "$path": "client" }
+      }
+    }
+  }
+}

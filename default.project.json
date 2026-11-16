@@ -1,0 +1,27 @@
+{
+  "name": "CommuteSurvival",
+  "servePort": 34880,
+  "servePlaceIds": [128125794321191],
+  "blockedPlaceIds": [96192775933291],
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "shared": { "$path": "src/shared" },
+      "$ignoreUnknownInstances": true
+    },
+    "ServerScriptService": {
+      "server": { "$path": "src/server" },
+      "$ignoreUnknownInstances": true
+    },
+    "StarterGui": {
+      "$properties": { "ScreenOrientation": "LandscapeSensor" },
+      "$ignoreUnknownInstances": true
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": { "$path": "src/client" },
+        "$ignoreUnknownInstances": true
+      }
+    }
+  }
+}

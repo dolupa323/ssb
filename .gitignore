@@ -1,0 +1,29 @@
+# 원본 웹게임의 클론 — 따로 받는다: git clone https://github.com/Jh0-0y/commute-survival.git commute-survival
+/commute-survival/
+
+# 실행 파일 (README의 「받을 것」 참고)
+/rojo.exe
+/tools/rojo/
+/tools/luau/*.exe
+
+# 도구가 돌 때 만드는 것 (Chrome 작업 폴더 · 찍은 화면 · 받아 둔 참고 자료)
+/tools/*/work/*
+# 다만 검사 도구의 자체 시험(node tools/mock/test.mjs의 lune-check)이 쓰는 사본은 올린다 —
+#  「달의 계승자」의 stage · canvas · sprite를 베낀 것(2026-11-16 사용자: "달계 관련 다 올려도된다")
+!/tools/mock/work/lune-check/
+/tools/*/out/
+/tools/*/shots/
+/tools/mock/ref/
+/tools/mock/sample/shots/
+/tools/ui/ref/
+/tools/font/fonts/*.ttf
+
+# 뿌리에 잘못 찍힌 화면 그림
+/*.png
+
+# Rojo · Studio가 만드는 것
+*.rbxl
+*.rbxlx
+*.rbxl.lock
+*.rbxlx.lock
+sourcemap.json

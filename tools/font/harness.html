@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"DoHyeon";src:url("fonts/DoHyeon-Regular.ttf");}
+@font-face{font-family:"VT323";src:url("fonts/VT323-Regular.ttf");}
+body{background:#333;color:#fff}
+</style></head>
+<body>
+<span style="font-family:DoHyeon">가</span><span style="font-family:VT323">0</span>
+<script>
+// 글꼴 한 벌을 크기 em으로 한 글자씩 그려, 잉크가 있는 네모만 잘라 알파 값(바이트)으로 돌려준다.
+//  adv = 다음 글자까지의 거리, ox · oy = 펜 자리(밑줄 위의 점)에서 잰 잉크 네모의 왼쪽 위(px, 위쪽이 음수), w · h = 잉크 네모.
+// Do Hyeon에 없는 문장 부호 셋은 단순한 도형으로 직접 그린다(다른 글꼴의 글자를 베끼지 않는다). 단위 = em. dots = { x, 밑줄 위 높이, 반지름 }, bar = { x, 윗변 높이, 폭, 굵기 }
+const SYNTH = {
+  '·': { adv: 0.56, dots: [[0.28, 0.33, 0.075]] },
+  '…': { adv: 0.9, dots: [[0.15, 0.07, 0.07], [0.45, 0.07, 0.07], [0.75, 0.07, 0.07]] },
+  '—': { adv: 0.9, bar: [0.06, 0.38, 0.78, 0.09] },
+};
+window.BAKE = {
+  async ready() { await document.fonts.load('40px "DoHyeon"', '가0'); await document.fonts.load('40px "VT323"', '0'); return document.fonts.check('40px "DoHyeon"') && document.fonts.check('40px "VT323"'); },
+  face(family, em, chars) {
+    const cv = document.createElement('canvas'); const S = em * 3; cv.width = S; cv.height = S;
+    const ctx = cv.getContext('2d', { willReadFrequently: true });
+    ctx.font = em + 'px "' + family + '"'; ctx.textBaseline = 'alphabetic'; ctx.fillStyle = '#fff';
+    const fm = ctx.measureText('가Hg');
+    const out = { em, asc: fm.fontBoundingBoxAscent, desc: fm.fontBoundingBoxDescent, glyphs: [] };
+    const bx = em, by = em * 2;
+    let bin = '';
+    for (const ch of chars) {
+      let m = ctx.measureText(ch);
+      ctx.clearRect(0, 0, S, S);
+      const syn = SYNTH[ch];
+      if (syn) { m = { width: syn.adv * em }; ctx.beginPath(); for (const d of syn.dots || []) { ctx.moveTo(bx + d[0] * em + d[2] * em, by - d[1] * em); ctx.arc(bx + d[0] * em, by - d[1] * em, d[2] * em, 0, Math.PI * 2); } ctx.fill(); if (syn.bar) ctx.fillRect(bx + syn.bar[0] * em, by - syn.bar[1] * em, syn.bar[2] * em, syn.bar[3] * em); }
+      else ctx.fillText(ch, bx, by);
+      const d = ctx.getImageData(0, 0, S, S).data;
+      let x0 = S, y0 = S, x1 = -1, y1 = -1;
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) if (d[(y * S + x) * 4 + 3] > 0) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+      const g = { c: ch.codePointAt(0), adv: Math.round(m.width * 1000) / 1000, ox: 0, oy: 0, w: 0, h: 0 };
+      if (x1 >= 0) {
+        g.ox = x0 - bx; g.oy = y0 - by; g.w = x1 - x0 + 1; g.h = y1 - y0 + 1;
+        for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) bin += String.fromCharCode(d[(y * S + x) * 4 + 3]);
+      }
+      out.glyphs.push(g);
+    }
+    out.alpha = btoa(bin);
+    return out;
+  },
+  // 견줘 보기: 브라우저가 그 글꼴로 직접 그린 글 한 줄(검사용 그림)
+  line(family, px, text) {
+    const cv = document.createElement('canvas'); const ctx0 = cv.getContext('2d'); ctx0.font = px + 'px "' + family + '"';
+    const w = Math.ceil(ctx0.measureText(text).width) + 8; cv.width = w; cv.height = Math.ceil(px * 1.6);
+    const ctx = cv.getContext('2d'); ctx.font = px + 'px "' + family + '"'; ctx.fillStyle = '#fff'; ctx.textBaseline = 'alphabetic'; ctx.fillText(text, 4, Math.round(px * 1.15));
+    return { w: cv.width, h: cv.height, width: ctx.measureText(text).width, data: btoa(String.fromCharCode(...ctx.getImageData(0, 0, cv.width, cv.height).data.filter((_, i) => i % 4 === 3))) };
+  },
+};
+</script>
+</body></html>

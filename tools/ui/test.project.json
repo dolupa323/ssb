@@ -1,0 +1,24 @@
+{
+  "name": "SsbUiTest",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "shared": { "$path": "../../src/shared" }
+    },
+    "ServerScriptService": {
+      "server": { "$path": "../../src/server" }
+    },
+    "StarterGui": {
+      "$properties": { "ScreenOrientation": "LandscapeSensor" }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": {
+          "$path": "../../src/client",
+          "Gfx": { "$path": "stubs/Gfx.luau" },
+          "Sound": { "$path": "stubs/Sound.luau" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"datamodel_type": "Edit", "code": "return string.format('CreatorType=%s CreatorId=%d GameId=%d PlaceId=%d', tostring(game.CreatorType), game.CreatorId, game.GameId, game.PlaceId)"}

@@ -1,0 +1,21 @@
+{
+  "name": "SoundTest",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "shared": {
+        "$className": "Folder",
+        "SoundMap": { "$path": "../../../src/shared/SoundMap.luau" },
+        "SoundIds": { "$path": "../../../src/shared/SoundIds.luau" }
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": {
+          "$className": "Folder",
+          "Sound": { "$path": "../../../src/client/Sound.luau" }
+        }
+      }
+    }
+  }
+}

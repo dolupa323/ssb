@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "endpoint": "/assets/v1/assets",
+  "scopes": ["asset:read", "asset:write"],
+  "body": "{\"request\":{\"assetType\":\"Audio\",\"displayName\":\"ssb sfx1\",\"description\":\"Commute Survival - sound effects sheet\",\"creationContext\":{\"creator\":{\"userId\":\"10311679477\"}}}}",
+  "files": [{ "name": "fileContent", "path": "C:\\YJS\\Roblox\\ssb\\assets\\audio\\sfx1.wav" }]
+}

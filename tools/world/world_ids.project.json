@@ -1,0 +1,25 @@
+{
+  "name": "WorldTestIds",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "shared": {
+        "$path": "../../src/shared",
+        "art": {
+          "$path": "../../src/shared/art",
+          "AssetIds": { "$path": "scenarios/AssetIds.sample.luau" }
+        }
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": {
+          "$className": "Folder",
+          "Art": { "$path": "../../src/client/Art.luau" },
+          "Gfx": { "$path": "../../src/client/Gfx.luau" },
+          "gfx": { "$path": "../../src/client/gfx" }
+        }
+      }
+    }
+  }
+}

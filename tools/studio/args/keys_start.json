@@ -1,0 +1,14 @@
+{"datamodel_type": "Client", "actions": [
+  {"action": "keyPress", "key_code": "Return"},
+  {"action": "wait", "wait_time_ms": 2500},
+  {"action": "keyPress", "key_code": "One"},
+  {"action": "wait", "wait_time_ms": 1000},
+  {"action": "keyDown", "key_code": "D"},
+  {"action": "wait", "wait_time_ms": 2000},
+  {"action": "keyPress", "key_code": "Space"},
+  {"action": "wait", "wait_time_ms": 1000},
+  {"action": "keyUp", "key_code": "D"},
+  {"action": "keyDown", "key_code": "S"},
+  {"action": "wait", "wait_time_ms": 3000},
+  {"action": "keyUp", "key_code": "S"}
+]}

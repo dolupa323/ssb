@@ -1,0 +1,14 @@
+{
+  "name": "MockBroken",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "server": { "$path": "server" }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": { "$path": "client" }
+      }
+    }
+  }
+}

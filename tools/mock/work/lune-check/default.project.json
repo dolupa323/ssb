@@ -1,0 +1,14 @@
+{
+  "name": "LuneCheck",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "shared": { "$path": "shared" }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": { "$path": "client" }
+      }
+    }
+  }
+}

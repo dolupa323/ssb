@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>ssb audio bake</title>
+<body>audio bake harness (bake.mjs가 조종한다)</body>
+<script>
+// 씨앗 난수: 굽는 결과가 돌릴 때마다 같도록 Math.random을 바꿔 끼운다 (mulberry32)
+(function () {
+  let s = 1;
+  window.__seed = n => { s = (n >>> 0) || 1; };
+  Math.random = function () {
+    s = (s + 0x6D2B79F5) >>> 0; let t = s;
+    t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+})();
+</script>
+<script src="work/audio.patched.js"></script>
+<script src="harness.js"></script>

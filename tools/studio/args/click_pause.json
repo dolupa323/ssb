@@ -1,0 +1,6 @@
+{"datamodel_type": "Client", "actions": [
+  {"action": "moveTo", "x": 1350, "y": 10},
+  {"action": "wait", "wait_time_ms": 200},
+  {"action": "mouseButtonClick", "mouse_button": "left", "x": 1350, "y": 10},
+  {"action": "wait", "wait_time_ms": 600}
+]}
